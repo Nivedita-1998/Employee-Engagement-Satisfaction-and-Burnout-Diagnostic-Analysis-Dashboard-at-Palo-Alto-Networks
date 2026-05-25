@@ -49,20 +49,20 @@ st.title("Employee Engagement & Burnout Dashboard")
 # KPI Cards
 st.metric(
     "Average Engagement",
-    round(filtered_df['EngagementIndex'].mean(), 2)
+    round(filtered_df['Engagement_Index'].mean(), 2)
 )
 
 st.metric(
     "High Burnout Employees",
     len(filtered_df[
-        filtered_df['BurnoutRisk'] == 'High'
+        filtered_df['Burnout_Risk'] == 'High'
     ])
 )
 
 # Engagement Distribution
 fig1 = px.histogram(
     filtered_df,
-    x='EngagementIndex',
+    x='Engagement_Index',
     nbins=20
 )
 
@@ -71,7 +71,7 @@ st.plotly_chart(fig1)
 # Burnout Risk
 fig2 = px.pie(
     filtered_df,
-    names='BurnoutRisk'
+    names='Burnout_Risk'
 )
 
 st.plotly_chart(fig2)
@@ -79,12 +79,12 @@ st.plotly_chart(fig2)
 # Role Engagement
 role_eng = filtered_df.groupby(
     'JobRole'
-)['EngagementIndex'].mean().reset_index()
+)['Engagement_Index'].mean().reset_index()
 
 fig3 = px.bar(
     role_eng,
     x='JobRole',
-    y='EngagementIndex'
+    y='Engagement_Index'
 )
 
 st.plotly_chart(fig3)
@@ -93,7 +93,7 @@ st.plotly_chart(fig3)
 fig4 = px.box(
     filtered_df,
     x='Attrition',
-    y='EngagementIndex'
+    y='Engagement_Index'
 )
 
 st.plotly_chart(fig4)
@@ -102,15 +102,15 @@ st.plotly_chart(fig4)
 st.subheader("Low Engagement Employees")
 
 alerts = filtered_df[
-    filtered_df['EngagementIndex'] < threshold
+    filtered_df['Engagement_Index'] < threshold
 ]
 
 st.dataframe(alerts[
     [
         'Department',
         'JobRole',
-        'EngagementIndex',
-        'BurnoutRisk',
+        'Engagement_Index',
+        'Burnout_Risk',
         'WorkLifeBalance'
     ]
 ])

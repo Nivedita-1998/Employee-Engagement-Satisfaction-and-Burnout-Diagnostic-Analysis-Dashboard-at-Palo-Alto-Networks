@@ -38,7 +38,7 @@ threshold = st.sidebar.slider(
 # Filter Data
 filtered_df = df[df['Department'].isin(department)]
 
-  if overtime != 'All':
+if overtime != 'All':
      filtered_df = filtered_df[
      filtered_df['OverTime'] == overtime
     ]

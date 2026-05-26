@@ -16,6 +16,7 @@ import plotly.graph_objects as go
 
 # Load Data
 df = pd.read_csv("Palo Alto Networks.csv")
+st.write(df.columns)
 
 # Sidebar
 st.sidebar.title("Filters")

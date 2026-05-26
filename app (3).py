@@ -16,10 +16,13 @@ import plotly.graph_objects as go
 
 # Load Data
 df = pd.read_csv("Palo Alto Networks.csv")
+df.columns=df.columns.str.strip()
+df.columns=df.columns.str.replace("","_")
 st.write(df.columns)
 
 # Sidebar
 st.sidebar.title("Filters")
+
 
 department = st.sidebar.multiselect(
     "Select Department",

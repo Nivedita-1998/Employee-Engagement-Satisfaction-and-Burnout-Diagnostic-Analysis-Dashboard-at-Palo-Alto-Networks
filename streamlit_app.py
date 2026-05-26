@@ -38,9 +38,9 @@ threshold = st.sidebar.slider(
 # Filter Data
 filtered_df = df[df['Department'].isin(department)]
 
-if overtime != 'All':
-    filtered_df = filtered_df[
-        filtered_df['OverTime'] == overtime
+  if overtime != 'All':
+     filtered_df = filtered_df[
+     filtered_df['OverTime'] == overtime
     ]
 
 # Title
@@ -49,7 +49,7 @@ st.title("Employee Engagement & Burnout Dashboard")
 # KPI Cards
 st.metric(
     "Average Engagement",
-    round(filtered_df['Engagement_Index'].mean(), 2)
+    round(filtered_df['Engagement_Index'].mean())
 )
 
 st.metric(
